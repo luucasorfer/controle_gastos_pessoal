@@ -1,23 +1,64 @@
 import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Trash2, Plus, Tag } from "lucide-react";
 import { toast } from "sonner";
 
 const EMOJI_SUGGESTIONS = [
-  "🏠", "🏡", "👚", "💰", "📚", "💳", "🕹️", "🎞️", "🍻", "🚑",
-  "🚗", "🛒", "🍴", "🐈", "🛵", "🚨", "📌", "💡", "🎯", "🎨",
-  "🏋️", "✈️", "🎭", "📱", "💻", "🎓", "🏥", "🚕", "🍕", "☕"
+  "🏠",
+  "🏦",
+  "👚",
+  "💰",
+  "📚",
+  "💳",
+  "🕹️",
+  "🎞️",
+  "🍻",
+  "🚑",
+  "🚗",
+  "🛒",
+  "🍴",
+  "🐈",
+  "🛵",
+  "🚨",
+  "📌",
+  "💡",
+  "🎯",
+  "🎨",
+  "🏋️",
+  "✈️",
+  "🎭",
+  "📱",
+  "💻",
+  "🎓",
+  "🏥",
+  "🚕",
+  "🍕",
+  "☕",
 ];
 
 export default function Categories() {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
-  const [icon, setIcon] = useState("📌");
+  const [icon, setIcon] = useState("");
 
   const utils = trpc.useUtils();
   const { data: categories, isLoading } = trpc.categories.list.useQuery();
@@ -28,9 +69,9 @@ export default function Categories() {
       toast.success("Categoria criada com sucesso!");
       setOpen(false);
       setName("");
-      setIcon("📌");
+      setIcon("");
     },
-    onError: (error) => {
+    onError: error => {
       toast.error("Erro ao criar categoria: " + error.message);
     },
   });
@@ -40,7 +81,7 @@ export default function Categories() {
       utils.categories.list.invalidate();
       toast.success("Categoria excluída com sucesso!");
     },
-    onError: (error) => {
+    onError: error => {
       toast.error("Erro ao excluir categoria: " + error.message);
     },
   });
@@ -54,7 +95,9 @@ export default function Categories() {
   };
 
   const handleDelete = (id: number, categoryName: string) => {
-    if (confirm(`Tem certeza que deseja excluir a categoria "${categoryName}"?`)) {
+    if (
+      confirm(`Tem certeza que deseja excluir a categoria "${categoryName}"?`)
+    ) {
       deleteMutation.mutate({ id });
     }
   };
@@ -83,7 +126,7 @@ export default function Categories() {
                 Adicione uma categoria para organizar seus gastos
               </DialogDescription>
             </DialogHeader>
-            
+
             <div className="space-y-4 py-4">
               <div className="space-y-2">
                 <Label htmlFor="name">Nome da Categoria</Label>
@@ -91,8 +134,8 @@ export default function Categories() {
                   id="name"
                   placeholder="Ex: Alimentação, Transporte..."
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  onKeyDown={(e) => e.key === 'Enter' && handleCreate()}
+                  onChange={e => setName(e.target.value)}
+                  onKeyDown={e => e.key === "Enter" && handleCreate()}
                 />
               </div>
 
@@ -100,16 +143,18 @@ export default function Categories() {
                 <Label>Ícone</Label>
                 <div className="flex items-center gap-2 mb-2">
                   <div className="text-3xl">{icon}</div>
-                  <span className="text-sm text-muted-foreground">Selecionado</span>
+                  <span className="text-sm text-muted-foreground">
+                    {icon !== "" ? "Selecionado" : "Nenhum ícone selecionado"}
+                  </span>
                 </div>
                 <div className="grid grid-cols-10 gap-2">
-                  {EMOJI_SUGGESTIONS.map((emoji) => (
+                  {EMOJI_SUGGESTIONS.map(emoji => (
                     <button
                       key={emoji}
                       type="button"
                       onClick={() => setIcon(emoji)}
                       className={`text-2xl p-2 rounded hover:bg-accent transition-colors ${
-                        icon === emoji ? 'bg-accent' : ''
+                        icon === emoji ? "bg-accent" : ""
                       }`}
                     >
                       {emoji}
@@ -123,7 +168,10 @@ export default function Categories() {
               <Button variant="outline" onClick={() => setOpen(false)}>
                 Cancelar
               </Button>
-              <Button onClick={handleCreate} disabled={createMutation.isPending}>
+              <Button
+                onClick={handleCreate}
+                disabled={createMutation.isPending}
+              >
                 {createMutation.isPending ? "Criando..." : "Criar Categoria"}
               </Button>
             </DialogFooter>
@@ -133,7 +181,7 @@ export default function Categories() {
 
       {isLoading ? (
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {[1, 2, 3, 4, 5, 6].map((i) => (
+          {[1, 2, 3, 4, 5, 6].map(i => (
             <Card key={i} className="animate-pulse">
               <CardHeader>
                 <div className="h-6 bg-muted rounded w-3/4" />
@@ -154,17 +202,22 @@ export default function Categories() {
         </Card>
       ) : (
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {categories.map((category) => (
-            <Card key={category.id} className="group hover:shadow-lg transition-shadow">
+          {categories.map(category => (
+            <Card
+              key={category.id}
+              className="group hover:shadow-lg transition-shadow"
+            >
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <span className="text-3xl">{category.icon}</span>
                     <div>
                       <CardTitle className="text-lg">{category.name}</CardTitle>
+                      {/* Manter comentado por enquanto
                       <CardDescription className="text-xs">
                         ID: {category.id}
                       </CardDescription>
+                      */}
                     </div>
                   </div>
                   <Button

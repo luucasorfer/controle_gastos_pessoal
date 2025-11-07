@@ -3,6 +3,7 @@
 ## Funcionalidades Principais
 
 ### Estrutura de Dados
+
 - [x] Criar tabela de categorias (Moradia, Investimentos, Roupa, Empréstimos, Estudos, Cartões, Lazer, Streaming, Disk/Adega, Saúde, Veículos, Supermercado, Alimentação, Petshop, Delivery, Dívidas, Outras)
 - [x] Criar tabela de tipos de pagamento (Crédito, Débito, Pix, Dinheiro)
 - [x] Criar tabela de gastos fixos (com nome, categoria, valor, data de vencimento)
@@ -11,6 +12,7 @@
 - [x] Criar tabela de reserva de emergência (histórico de movimentações)
 
 ### Backend (tRPC Procedures)
+
 - [x] Implementar CRUD de categorias
 - [x] Implementar CRUD de gastos fixos
 - [x] Implementar CRUD de gastos variáveis
@@ -22,6 +24,7 @@
 - [x] Implementar relatórios de análise financeira
 
 ### Interface do Usuário
+
 - [x] Dashboard principal com resumo financeiro
 - [x] Visualização de saldo atual e saldo com reservas
 - [x] Formulário para adicionar/editar gastos fixos
@@ -34,6 +37,7 @@
 - [x] Design premium com cores e tipografia elegantes
 
 ### Visualizações e Relatórios
+
 - [x] Gráfico de pizza mostrando gastos por categoria
 - [x] Gráfico de barras comparando gastos mensais
 - [x] Indicadores visuais de porcentagem por categoria
@@ -42,6 +46,7 @@
 - [ ] Exportação de relatórios (opcional)
 
 ### Funcionalidades Extras
+
 - [x] Suporte a múltiplos cartões de crédito
 - [x] Controle de parcelas e prestações
 - [x] Sistema de alertas de vencimento para gastos próximos do prazo
@@ -52,6 +57,7 @@
 - [x] Persistência da preferência de tema
 
 ### Metas de Economia
+
 - [x] Criar tabela de metas no banco de dados
 - [x] Criar tabela de contribuições para metas
 - [x] Implementar CRUD de metas (criar, editar, excluir, listar)
@@ -61,27 +67,11 @@
 - [x] Mostrar metas no dashboard principal com progresso visual
 - [x] Adicionar navegação para metas no menu lateral
 
-### Ajustes Finais
-- [x] Alterar título da aplicação para "Controle de Gastos"
-- [x] Ajustar título no menu para quebrar linha ao invés de truncar
+### Correções e Ajustes
 
-### Revisão e Testes Completos
-- [x] Revisar layout do Dashboard
-- [x] Revisar layout de Categorias
-- [x] Revisar layout de Gastos Fixos
-- [x] Revisar layout de Gastos Variáveis
-- [x] Revisar layout de Receitas
-- [x] Revisar layout de Reserva de Emergência
-- [x] Revisar layout de Metas de Economia
-- [x] Testar responsividade mobile/desktop
-- [x] Testar funcionalidades CRUD em todas as páginas
-- [x] Testar filtros e cálculos
-- [x] Aplicar ajustes de layout identificados
-- [x] Validar tema escuro/claro em todas as telas
-
-### Correções de Bugs
-- [x] Corrigir duplicação de valor "R$ 0,00" na página de Metas de Economia
-
-### Compatibilidade Windows
-- [x] Corrigir scripts do package.json para funcionar no Windows
-- [x] Instalar cross-env para variáveis de ambiente multiplataforma
+- [ ] | 06/11/2025 | Corrigir: Saldo deve diminuir sempre que uma conta é marcada como 'pago'
+- [ ] | 06/11/2025 | Corrigir: Gastos fixos dever ser individuais de cada mês, se alterar o valor do mês atual não deve refletir nos meses anteriores ou posteriores
+- [ ] | 06/11/2025 | Corrigir: Gastos fixos devem ter a flag de 'pendente'/'pago'
+- [ ] | 06/11/2025 | Corrigir: Utilizar um modal para marcar despesas como pago e aplicar a forma de pagamento
+- [ ] | 06/11/2025 | Corrigir: Saldo total de Reserva de Emergencia esta sendo apresentado errado
+- [ ] | 06/11/2025 | Melhoria: Tabela de pendentes na tela inicial

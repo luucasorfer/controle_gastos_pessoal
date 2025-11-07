@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1762474013588,
+      "tag": "0000_broad_brood",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1762474076072,
+      "tag": "0001_wooden_donald_blake",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1762475468534,
+      "tag": "0002_youthful_mulholland_black",
+      "breakpoints": true
+    }
+  ]
+}
